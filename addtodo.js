@@ -16,18 +16,23 @@ function addtodo() {
             if (err) {
                 console.log('Error reading', err);
             } else {
-
+                //take from the user taskId and taskName
                 rl.question('Enter taskId ? : ', (taskId) => {
 
                     rl.question('Enter taskName ? : ', (taskName) => {
 
+                        //convert json data into readable format data
                         const todos = JSON.parse(data);
+
+                        //adding data from th user to the json file
                         todos.push({ id: Number(taskId), task: taskName })
+
+                        //written data into the json file
                         fs.writeFile('./data.json', JSON.stringify(todos), (err) => {
                             if (err) {
-                                console.log('Error', err);
+                                console.log('Error From Reading File ', err);
                             } else {
-                                console.log('Successfully added task ✔️✔️✔️');
+                                console.log('Successfully added task ✔️ ');
                             }
                         })
 

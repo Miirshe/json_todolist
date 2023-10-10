@@ -8,6 +8,10 @@
     },
     {
         "id": 3,
-        "task": "doing something else"
+        "task": "task3"
+    },
+    {
+        "id": 4,
+        "task": "task4"
     }
 ]

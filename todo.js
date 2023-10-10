@@ -2,7 +2,7 @@ const readline = require('readline');
 const { addtodo } = require('./addtodo.js');
 const { display } = require('./display.js');
 const { deletetodo } = require('./deletetodo.js');
-const updatetodo = require('./updatetodo.js');
+const { updatetodo } = require('./updatetodo.js');
 const rl = readline.createInterface({
     input: process.stdin,
     output: process.stdout
@@ -16,5 +16,7 @@ rl.question("Enter The Action Do You Want Like ( add , display , update , delete
         updatetodo();
     } else if (input.toLowerCase() == 'delete') {
         deletetodo();
+    } else {
+        console.log('Invalid input type 😜 ');
     }
 })
