@@ -8,10 +8,13 @@ const rl = readline.createInterface({
     input: process.stdin,
     output: process.stdout
 })
-rl.question("Enter The Action Do You Want Like ( add , display , displayOne , update , delete )? : ", (input) => {
-    if (input.toLowerCase() == 'display') {
+
+
+
+rl.question("Enter The Action Do You Want Like ( add , readtodos , readtodo , update , delete )? : ", (input) => {
+    if (input.toLowerCase() == 'readtodos') {
         read_todos();
-    } else if (input.toLowerCase() == 'displayone') {
+    } else if (input.toLowerCase() == 'readtodo') {
         read_todo()
     } else if (input.toLowerCase() == 'add') {
         addtodo();
@@ -19,6 +22,8 @@ rl.question("Enter The Action Do You Want Like ( add , display , displayOne , up
         updatetodo();
     } else if (input.toLowerCase() == 'delete') {
         deletetodo();
+    } else if (input.toLowerCase() == 'quit') {
+        rl.close();
     } else {
         console.log('Invalid input type 😜 ');
     }

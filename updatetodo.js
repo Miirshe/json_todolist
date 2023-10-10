@@ -13,35 +13,39 @@ function updatetodo() {
             if (err) {
                 console.log('Error From ReadFile ! 😜');
             } else {
-                rl.question('Enter taskId ? : ', (taskId) => {
+                if (!data) {
+                    console.log('Data Not Found ! 😜 ');
+                } else {
+                    rl.question('Enter taskId ? : ', (taskId) => {
 
-                    rl.question('Enter taskName ? : ', (taskName) => {
+                        rl.question('Enter taskName ? : ', (taskName) => {
 
-                        const todos = JSON.parse(data);
+                            const todos = JSON.parse(data);
 
-                        const update_todos = todos.map(todo => {
-                            if (todo.id == Number(taskId)) {
-                                return {
-                                    ...todo,
-                                    task: taskName
+                            const update_todos = todos.map(todo => {
+                                if (todo.id == Number(taskId)) {
+                                    return {
+                                        ...todo,
+                                        task: taskName
+                                    }
                                 }
-                            }
 
-                            return todo;
+                                return todo;
 
-                        });
-                        fs.writeFile('./data.json', JSON.stringify(update_todos), (err) => {
-                            if (err) {
-                                console.log('Error Writting File 😜 ', err);
-                            } else {
-                                console.log('Successfully updated task ✔️ ');
-                            }
+                            });
+                            fs.writeFile('./data.json', JSON.stringify(update_todos, null, 2), (err) => {
+                                if (err) {
+                                    console.log('Error Writting File 😜 ', err);
+                                } else {
+                                    console.log('Successfully updated task ✔️ ');
+                                }
 
+                            })
+                            console.log('update_todos', update_todos);
                         })
-                        console.log('update_todos', update_todos);
-                    })
 
-                })
+                    })
+                }
             }
         })
 
