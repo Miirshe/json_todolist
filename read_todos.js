@@ -1,6 +1,6 @@
 const fs = require('fs');
 
-function display() {
+function read_todos() {
 
     if (fs.existsSync('./data.json')) {
         fs.readFile('./data.json', 'utf8', (err, data) => {
@@ -10,8 +10,10 @@ function display() {
                 console.log('data', data);
             }
         })
+    } else {
+        console.log('Opps 404 🤪 ');
     }
 }
 module.exports = {
-    display
+    read_todos
 }

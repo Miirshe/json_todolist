@@ -39,7 +39,7 @@ function deletetodo() {
             }
         })
     } else {
-        console.log(' Opps 404 🤪🤪🤪 ');
+        console.log(' Opps 404 🤪 ');
     }
 }
 

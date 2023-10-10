@@ -17,31 +17,35 @@ function addtodo() {
                 console.log('Error reading', err);
             } else {
                 //take from the user taskId and taskName
-                rl.question('Enter taskId ? : ', (taskId) => {
+                if (!data) {
+                    console.log('Opps 404 🤪 ');
+                } else {
+                    rl.question('Enter taskId ? : ', (taskId) => {
 
-                    rl.question('Enter taskName ? : ', (taskName) => {
+                        rl.question('Enter taskName ? : ', (taskName) => {
 
-                        //convert json data into readable format data
-                        const todos = JSON.parse(data);
+                            //convert json data into readable format data
+                            const todos = JSON.parse(data);
 
-                        //adding data from th user to the json file
-                        todos.push({ id: Number(taskId), task: taskName })
+                            //adding data from th user to the json file
+                            todos.push({ id: Number(taskId), task: taskName })
 
-                        //written data into the json file
-                        fs.writeFile('./data.json', JSON.stringify(todos), (err) => {
-                            if (err) {
-                                console.log('Error From Reading File ', err);
-                            } else {
-                                console.log('Successfully added task ✔️ ');
-                            }
+                            //written data into the json file
+                            fs.writeFile('./data.json', JSON.stringify(todos, null, 2), (err) => {
+                                if (err) {
+                                    console.log('Error From Reading File ', err);
+                                } else {
+                                    console.log('Successfully added task ✔️ ');
+                                }
+                            })
+
                         })
-
                     })
-                })
+                }
             }
         })
     } else {
-        console.log(' Opps 404 🤪🤪🤪 ');
+        console.log(' Opps 404 🤪');
     }
 }
 
